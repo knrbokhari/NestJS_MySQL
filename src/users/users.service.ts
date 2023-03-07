@@ -3,11 +3,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../typeorm/entities/User';
 import { CreateUserParams, UpdateUserParams } from 'src/utils/types';
+import { Profile } from 'src/typeorm/entities/Profile';
+import { Post } from 'src/typeorm/entities/Post';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectRepository(Profile) private profileRepository: Repository<Profile>,
+    @InjectRepository(Post) private postRepository: Repository<Post>,
   ) {}
 
   create(userDetails: CreateUserParams) {
