@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from '../typeorm/entities/User';
 import { CreateUserParams, UpdateUserParams } from 'src/utils/types';
 
@@ -32,6 +31,6 @@ export class UsersService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} user`;
+    return this.userRepository.delete({ id });
   }
 }
