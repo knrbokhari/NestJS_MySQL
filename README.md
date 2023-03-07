@@ -35,6 +35,10 @@ $ CREATE DATABASE nestjs;
 $ use nestjs;
 ```
 
+```bash
+$ exit;
+```
+
 ## Running the app
 
 ```bash
