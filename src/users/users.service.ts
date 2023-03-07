@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from '../typeorm/entities/User';
-import { CreateUserParams } from 'src/utils/types';
+import { CreateUserParams, UpdateUserParams } from 'src/utils/types';
 
 @Injectable()
 export class UsersService {
@@ -27,8 +27,8 @@ export class UsersService {
     return this.userRepository.findBy({ id });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(id: number, updateUserDetails: UpdateUserParams) {
+    return this.userRepository.update({ id }, { ...updateUserDetails });
   }
 
   remove(id: number) {
