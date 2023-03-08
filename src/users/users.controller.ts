@@ -16,6 +16,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { UserEntity } from './entities/user.entity';
 import { CreateUserProfileDto } from './dto/CreateUserProfile.dto';
+import { CreateUserPostDto } from './dto/CreateUserPost.dto';
 
 @Controller('users')
 @ApiTags('users')
@@ -65,5 +66,13 @@ export class UsersController {
     @Body() createUserProfileDto: CreateUserProfileDto,
   ) {
     return this.usersService.createUserProfile(id, createUserProfileDto);
+  }
+
+  @Post(':id/posts')
+  createUserPost(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() createUserPostDto: CreateUserPostDto,
+  ) {
+    return this.usersService.createUserPost(id, createUserPostDto);
   }
 }
